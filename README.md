@@ -1,5 +1,5 @@
 # 🧠 TMR Monte Carlo Simulation 
-### Fault Tolerant System Design course assignment under the supervision of Dr. Zarandi at Amirkabir University of Technology
+### 🎓  Fault Tolerant System Design course assignment under the supervision of Dr. Zarandi at Amirkabir University of Technology
 This repository contains a **Monte Carlo simulation** of a **Triple Modular Redundancy (TMR)** system implemented in **Rust**.  
 It compares two voting strategies:
 
@@ -84,7 +84,7 @@ For each of `N` trials:
 
 The results of the evaluation are summarized in the following plot:
 
-- [TMR_Comparison.png](./TMR_Comparison.png)
+![Evaluation Results](TMR_Comparison.png)
 
 
 ---
@@ -105,27 +105,34 @@ Using a fixed seed is important for **scientific and academic reproducibility**:
 If the PRNG is initialized from system entropy/time, each run uses a different random sequence. Results will vary slightly from run to run, which is normal for Monte Carlo experiments but less suitable for graded reports requiring consistent outputs.
 
 In this project:
-- `seed = 7` is simply a chosen constant (any integer is acceptable).
+- `seed = 10` is simply a chosen constant.
 - The key requirement is **consistency**, not the specific numeric value.
 
 ---
 
-## 🖼️ Output Artifact
-
-The program generates a colored, high-resolution bar chart:
-
-- **File:** `TMR_Comparison.png`
-- **Content:** side-by-side comparison (Classic vs MAP)
-- **Annotations:** count and success rate are displayed on the plot, and axes/labels are included.
-
----
-
-## ▶️ Build and Run
+## ⚙️ Build and Run
 
 ### Requirements
 - Rust (edition 2021 or newer)
 - Cargo
 
-### Execution
+## 🚀 Clone and Run the Project
+
+### 1. Clone the Repository
 ```bash
-cargo run --release -- 1000 7
+git clone https://github.com/salirezaeb/TMR.git
+```
+### 2. Navigate to the Project Directory and Build and Run the Project
+```bash
+cd TMR
+cargo run --release 1000 10
+```
+---
+
+## ✅ Conclusion
+
+This project presented a Monte Carlo evaluation of a Triple Modular Redundancy (TMR) system with multi-valued outputs.  
+Two voting strategies were analyzed: a classic majority voter and a reliability-aware MAP voter.
+The results demonstrate that while the classic voter performs adequately when a majority exists, its performance degrades in cases where all module outputs differ. In contrast, the MAP voter explicitly incorporates module reliability information and the assumed uniform fault model, allowing it to make more informed decisions even in the absence of a majority.
+The experimental results clearly show that, under asymmetric reliability conditions, the MAP voter achieves a significantly higher rate of correct decisions compared to the classic voter. This confirms the importance of probabilistic, reliability-aware voting schemes in fault-tolerant system design.
+Overall, the study highlights how incorporating system knowledge into the voting mechanism can substantially improve the reliability of TMR-based systems.
